@@ -1,0 +1,127 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header{
+    background-color:#e6f0f7;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 80px;
+    box-shadow: 0 5px 15px;
+    
+}
+.navbar{
+    display:flex;
+    align-items: center;
+    justify-content: left;
+}
+nav{
+    text-align: right;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    padding-left: 850px;
+}
+nav ul{
+    display: inline-block;
+    list-style-type: none;
+    }
+nav ul li{
+    display: inline-block;
+    margin-right: 20px;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+.navbar li a:hover{
+    color: brown;
+}
+
+.slider{
+    padding-top: 20px;
+    width: 85vmin;
+    position: absolute;
+    top: auto;
+    left: auto;
+}
+
+.ftr h1{
+padding-top: 30px;
+padding-bottom: 30px;
+}
+
+.feature{
+   padding-left: 30px;
+   padding-right: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+
+}
+h1{
+    font-size: 30px;
+    text-align: center;
+}
+.fe-box{
+    width: 180px;
+    text-align: center;
+    padding: 15px 15px 15px;
+    box-shadow: 20px 20px 20px rgba(red, green, blue, alpha);
+    border: 1px solid rgb(194, 194, 221);
+}
+
+.fe-box h6{
+    padding: 9px 8px 6px 8px;
+    line-height: 1;
+    border-radius: 4px;
+    color: black;
+    background-color: palevioletred;
+}
+
+.product h1{
+    padding-left: 50%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    }
+
+.pdt h1{
+    padding-left:50px;
+    padding-top: 70px;
+}
+.pdt p{
+    padding-left:43%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.footer{
+    background-color: gainsboro;
+    font-style: 14px;
+    padding: 20px 20px 20px;
+}
+
+.footer p{
+    color: blue;
+}
+.footer h3{
+    color: rgb(38, 34, 43);
+}
+.footer .row{
+    display: flex;
+   align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+
+.footer-col-1{
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+.footer-col-2
+{
+    min-width: 200px;
+    margin-bottom: 20px;
+}
