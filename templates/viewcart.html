@@ -51,7 +51,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">About US</a>
@@ -72,34 +72,62 @@
     </form>
   </div>
 </nav>
-<!--Product-->
+
+{% block title %}{% endblock %}
+
+{% block content %}
 <div class="container">
     <div class="row">
-      <div class="col-md-12">
-          <h1>Products</h1>
-           <div class="container">
-             <div class="row mt-3">
-                {% for p in product_list %}
-                <div class="col-md-3">
-                  <div class="mt-4">
-                    <img src="{{p.image.url}}" alt="" class="img-fluid" style="height: 2500; object-fit:cover;">
-                    <h6><p> {{p.title}}</p></h6>
-                    <p>price : RS {{p.price}}</p>
-                    <a href="{% url 'home:addtocart' p.id %}" class="btn btn-primary">Add To Cart</a>
-                  </div>
-                </div>
-                {% endfor %}
-             </div>    
-           </div>
-      </div>
+        <div class="col-md-8">
+            <h4>Cart Items</h4><hr>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Product</th>
+                        <th>Rate</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for cp in cart.cartproduct_set.all %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{cp.Product.title}}</td>
+                        <td>{{cp.rate}}</td>
+                        <td>{{cp.quantity}}</td>
+                        <td>{{cp.subtotal}}</td>
+                        <td>
+                            <a href="{% url 'home:managecart' cp.id %}?action=inc" class="btn btn-primary"> + </a>
+                            <a href="{% url 'home:managecart' cp.id %}?action=dcr" class="btn btn-primary"> - </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <th colspan="4" class="text-right">Total</th>
+                        <th>Rs. {{cart.total}}</th>
+                        {% if cart.cartproduct_set.all %}
+                        <th><a href="{% url 'home:emptycart' %}">Empty Cart</a></th>
+                        {% endif %}
+                    </tr>
+                    {% if cart.cartproduct_set.all %}
+                    <tr>
+                        <th><a class="btn btn-info" href="{% url 'home:checkout' %}"> Checkout </a></th>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
+{% endblock %}
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{% static 'cart.js' %}"></script>
-  </body>
+   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="{% static 'cart.js' %}"></script>
+ </body>
 </html>

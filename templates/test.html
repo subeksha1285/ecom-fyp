@@ -28,16 +28,17 @@
   margin: 20px;
   background-color: rgb(21, 89, 101);
  }
- 
- a1{
+
+    a1{
         font-style: italic;
         color: aliceblue;
         padding-top: 100px;
         padding-left: 25px;
     }
- h3{
+
+    h3{
         color: rgb(214, 227, 238);
-        padding-left:20px ;
+        padding-left:0px ;
         font-size: 25px;
     }
     p{
@@ -48,29 +49,25 @@
         padding-top: 2%;
     }
     button{
-        background-color: rgb(229, 235, 240);
-        padding-left: 2%;
-        align-items: centre;
-    } 
-    p1{
-        padding-top: 50px;
-        padding-left: 120px;
+        background-color: rgb(213, 225, 235);
+        padding-left: 5%;
+        padding-right: 5%;
     }
 </style>
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-md-6 mx-auto">
-            <h3>Customer Login Form</h3>
-            <form action="" method="POST">
-                {% csrf_token %}
-                {{form.as_p}}
-                <p1><button class="login" type="submit"><a href="{% url 'home:customerprofile' %}">Login</button></p1>
-                {% if error %}
-                <li style="color: red;">{{error}}</li>
-                {% endif %}
-            </form>
-        </div>
+      <div class="col-md-6 mx-auto">
+        <h3>Customer Registration Form</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <tr>
+                <button><a class="btn" href="{% url 'home:customerprofile' %}"> Login </a></button>
+            </tr>
+        </form>
+        <a1><p>or dont have account? <a href="{% url 'home:customerregistration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Register here</a></p></a1>
+    </div>     
     </div>
 </div>
 </body>

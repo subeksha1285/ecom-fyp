@@ -1,25 +1,75 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Simple Auth System</title>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Sakahari home</title>
+    {%load static%}
 </head>
+<style>
+    .errorlist {
+        color: red;
+    }
+    body{
+      background-color: rgb(190, 228, 230);
+      background-image: url(../static/image/formbg.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      padding-left: 15%;
+      padding-top: 2%;
+    }
+    .container {
+  width: 400px;
+  border: 4px solid rgb(246, 251, 246);
+  padding-left: 50px;
+  padding-right: 0px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin: 20px;
+  background-color: rgb(21, 89, 101);
+ }
+ 
+ a1{
+        font-style: italic;
+        color: aliceblue;
+        padding-top: 100px;
+        padding-left: 25px;
+    }
+ h3{
+        color: rgb(214, 227, 238);
+        padding-left:20px ;
+        font-size: 25px;
+    }
+    p{
+        color: rgb(1, 13, 23);
+        padding-left:15px ; 
+        font-size: large;
+        color: aliceblue;
+        padding-top: 2%;
+    }
+    button{
+        background-color: rgb(229, 235, 240);
+        padding-left: 2%;
+        align-items: centre;
+    } 
+    p1{
+        padding-top: 50px;
+        padding-left: 120px;
+    }
+</style>
 <body>
-    <h3>Register here</h3>
-    <hr>
-    
-    <form action="" method="POST">
-        {% csrf_token %}
-    
-        {% for field in form %}
-            <div>
-                <p>{{ field.label }}: <br> {{ field }}</p> 
-    
-                {% for error in field.errors %}
-                    <small style="color: red">{{ error }}</small>
-                {% endfor %}
-            </div>
-        {% endfor %}
-        <button type="submit">Register</button>
-    </form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h3>Customer Registration Form</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary">Register</button>
+            </form>
+            <p> Already have an account? <a>Login here</a></p>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -1,0 +1,33 @@
+{% block title %}{{product.title}}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3>Product: {{product.title}}</h3><hr>
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{product.image.url}}" alt="" class="img-fluid">
+            <div class="row">
+                {% for pi in product.productimage_set.all %}
+                <div class="col-md-4 p-3">
+                    <a href="{{pi.image.url}}" target="_blank">
+                        <img src="{{pi.image.url}}" class="img-fluid" style="height: 100px; object-fit: contain;" alt="">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h4>{{product.title}} (Viewed {{product.view_count}} times)</h4>
+            <h5>Category: {{product.category}}</h5>
+            <h5>Price:> Rs. {{product.price}}</h5>
+            <a href="{}" class="btn btn-info">Add To Cart</a>
+            <hr>
+            <p class="text-info">description: {{product.description}}</p>
+            <p class="text-info">size:{{product.size}}</p>
+            <hr>
+            <p>{{product.return_policy}}</p>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
